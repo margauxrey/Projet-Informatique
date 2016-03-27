@@ -31,80 +31,80 @@ Paris Velibs
     var marker, i;
 
     var velo1 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'yellow',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'gold',
-        strokeWeight: 3,
-        radius : 50
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'yellow',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'gold',
+            strokeWeight: 3,
+            radius : 50
+            };
 
     var velo2 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'yellow',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'red',
-        strokeWeight: 2,
-        radius : 100
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'yellow',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'red',
+            strokeWeight: 2,
+            radius : 100
+            };
 
     var velo3 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'yellow',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 200
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'yellow',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            radius : 200
+            };
     var velo4 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'yellow',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 500
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'yellow',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            radius : 500
+            };
     var place1 = {
-        path : google.maps.SymbolPath.CIRCLE, 
-        fillColor: 'pink',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 50
-    };
+            path : google.maps.SymbolPath.CIRCLE, 
+            fillColor: 'pink',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            radius : 50
+            };
     var  place2 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'green',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 100
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'green',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            radius : 100
+            };
     var  place3 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillColor: 'green',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 200
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor: 'green',
+            fillOpacity: 0.8,
+            scale: 0.05,
+            strokeColor: 'blue',
+            strokeWeight: 2,
+            radius : 200
+            };
     var  place4 = {
-        path : google.maps.SymbolPath.CIRCLE,
-        fillOpacity: 0.5,
-        fillColor: '#ff0000',
-        strokeOpacity: 0.5,
-        strokeColor: '#ff0000',
-        strokeWeight: 3.0,
-        radius : 500,
-        scale : 15
-    };
+            path : google.maps.SymbolPath.CIRCLE,
+            fillOpacity: 0.5,
+            fillColor: '#ff0000',
+            strokeOpacity: 0.5,
+            strokeColor: '#ff0000',
+            strokeWeight: 3.0,
+            radius : 500,
+            scale : 15
+            };
 
     for (i = 0; i < locations.length; i++) {
         
@@ -113,23 +113,23 @@ Paris Velibs
         else if (locations[i][3] === 200) { var icon = velo3}
         else if (locations[i][3] === 500) { var icon = velo4}
         else if (locations[i][4] === 50) { var icon = place1}
-         else if (locations[i][4] === 100) { var icon = place2}
-          else if (locations[i][4] === 200) { var icon = place3}
-           else if (locations[i][4] === 500) { var icon = place4}
+        else if (locations[i][4] === 100) { var icon = place2}
+        else if (locations[i][4] === 200) { var icon = place3}
+        else if (locations[i][4] === 500) { var icon = place4}
         
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            icon: icon,
-            map: map
-        });
+           marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                icon: icon,
+                map: map
+            });
 
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(locations[i][0]);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
-     }
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+         }
         
   </script>
 </body>
