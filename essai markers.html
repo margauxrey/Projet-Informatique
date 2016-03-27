@@ -29,33 +29,33 @@ Paris Velibs
     var infowindow = new google.maps.InfoWindow();
 
     function setMarkers(map) {
-    var velo = {
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-          icon: {
-            path : google.maps.SymbolPath.CIRCLE,
-            radius: locations[i][3], 
-            fillOpacity: 0.5,
-            fillColor: '#ff0000',
-            strokeOpacity: 0.5,
-            strokeColor: '#ff0000',
-            strokeWeight: 3.0, 
-            scale: 15 //pixels
-          }
-        };
-        var place = {
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-          icon: {
-            path : google.maps.SymbolPath.CIRCLE,
-            radius: locations[i][4], 
-            fillOpacity: 0.5,
-            fillColor: '#96CA2D',
-            strokeOpacity: 0.5,
-            strokeColor: '#96CA2D',
-            strokeWeight: 3.0, 
-            scale: 20 //pixels
-          }
-        };
-      
+        var velo = {
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              icon: {
+                path : google.maps.SymbolPath.CIRCLE,
+                radius: locations[i][3], 
+                fillOpacity: 0.5,
+                fillColor: '#ff0000',
+                strokeOpacity: 0.5,
+                strokeColor: '#ff0000',
+                strokeWeight: 3.0, 
+                scale: 15 //pixels
+              }
+            };
+            var place = {
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              icon: {
+                path : google.maps.SymbolPath.CIRCLE,
+                radius: locations[i][4], 
+                fillOpacity: 0.5,
+                fillColor: '#96CA2D',
+                strokeOpacity: 0.5,
+                strokeColor: '#96CA2D',
+                strokeWeight: 3.0, 
+                scale: 20 //pixels
+              }
+            };
+          
       
   for (var i = 0; i < locations.length; i++) {
 
