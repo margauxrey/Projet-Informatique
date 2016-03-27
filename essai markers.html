@@ -12,61 +12,122 @@ Paris Velibs
     <div id="map-canvas" style="width: 1000px; height: 700px;"></div>
 
   <script type="text/javascript">
-    var locations = [
-      ['31705 - CHAMPEAUX (BAGNOLET)', 48.864528, 2.416171, 10000,100],
+   var locations = [
+    ['31705 - CHAMPEAUX (BAGNOLET)', 48.864528, 2.416171, 10000,100],
       ['10042 - POISSONNIÈRE - ENGHIEN', 48.872420  , 2.348395, 100,1000],
       ['08020 - METRO ROME', 48.882149, 2.319860, 1000,100],
       ['01022 - RUE DE LA PAIX',48.868217 ,2.330494, 10000,100],
       ['35014 - DE GAULLE (PANTIN)', 48.893269, 2.412716, 100,1000]
     ];
 
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-      zoom: 12,
-      center: new google.maps.LatLng(48.853, 2.35),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: new google.maps.LatLng(48.853, 2.35),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
     var infowindow = new google.maps.InfoWindow();
 
-    function setMarkers(map) {
-        var velo = {
-              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-              icon: {
-                path : google.maps.SymbolPath.CIRCLE,
-                radius: locations[i][3], 
-                fillOpacity: 0.5,
-                fillColor: '#ff0000',
-                strokeOpacity: 0.5,
-                strokeColor: '#ff0000',
-                strokeWeight: 3.0, 
-                scale: 15 //pixels
-              }
-            };
-            var place = {
-              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-              icon: {
-                path : google.maps.SymbolPath.CIRCLE,
-                radius: locations[i][4], 
-                fillOpacity: 0.5,
-                fillColor: '#96CA2D',
-                strokeOpacity: 0.5,
-                strokeColor: '#96CA2D',
-                strokeWeight: 3.0, 
-                scale: 20 //pixels
-              }
-            };
-          
-      
-  for (var i = 0; i < locations.length; i++) {
+    var marker, i;
 
-    var localisations = locations[i];
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(localisations[i][1], localisations[i][2]),
-        map: map,
-        icon : {velo,place}
-    });
+    var velo1 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'yellow',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'gold',
+        strokeWeight: 3,
+        radius : 50
+    };
 
-    }
+    var velo2 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'yellow',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'red',
+        strokeWeight: 2,
+        radius : 100
+    };
+
+    var velo3 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'yellow',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 200
+    };
+    var velo4 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'yellow',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 500
+    };
+    var place1 = {
+        path : google.maps.SymbolPath.CIRCLE,   
+        fillColor: 'pink',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 50
+    };
+    var  place2 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'green',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 100
+    };
+    var  place3 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'green',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 200
+    };
+    var  place4 = {
+        path : google.maps.SymbolPath.CIRCLE,
+        fillColor: 'green',
+        fillOpacity: 0.8,
+        scale: 0.05,
+        strokeColor: 'blue',
+        strokeWeight: 2,
+        radius : 500
+    };
+
+    for (i = 0; i < locations.length; i++) {
+        
+        if (locations[i][3] === 50){var icon = velo1} 
+        else if (locations[i][3] === 100) { var icon = velo2}
+        else if (locations[i][3] === 200) { var icon = velo3}
+        else if (locations[i][3] === 500) { var icon = velo4}
+        else if (locations[i][3] === 50) { var icon = place1}
+         else if (locations[i][3] === 100) { var icon = place2}
+          else if (locations[i][3] === 200) { var icon = place3}
+           else if (locations[i][3] === 500) { var icon = place4}
+        
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            icon: icon,
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+            return function () {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
 }
       /*google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
