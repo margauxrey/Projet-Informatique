@@ -51,7 +51,7 @@ Paris Velibs
     };
 
     var velo3 = {
-        path : google.maps.SymbolPath.CIRCLE,
+        /*path : google.maps.SymbolPath.CIRCLE,*/
         fillColor: 'yellow',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -60,7 +60,7 @@ Paris Velibs
         radius : 200
     };
     var velo4 = {
-        path : google.maps.SymbolPath.CIRCLE,
+        /*path : google.maps.SymbolPath.CIRCLE,*/
         fillColor: 'yellow',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -69,7 +69,7 @@ Paris Velibs
         radius : 500
     };
     var place1 = {
-        path : google.maps.SymbolPath.CIRCLE,   
+        /*path : google.maps.SymbolPath.CIRCLE,*/   
         fillColor: 'pink',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -78,7 +78,7 @@ Paris Velibs
         radius : 50
     };
     var  place2 = {
-        path : google.maps.SymbolPath.CIRCLE,
+        /*path : google.maps.SymbolPath.CIRCLE,*/
         fillColor: 'green',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -87,7 +87,7 @@ Paris Velibs
         radius : 100
     };
     var  place3 = {
-        path : google.maps.SymbolPath.CIRCLE,
+        /*path : google.maps.SymbolPath.CIRCLE,*/
         fillColor: 'green',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -96,7 +96,7 @@ Paris Velibs
         radius : 200
     };
     var  place4 = {
-        path : google.maps.SymbolPath.CIRCLE,
+        /*path : google.maps.SymbolPath.CIRCLE,*/
         fillColor: 'green',
         fillOpacity: 0.8,
         scale: 0.05,
@@ -111,10 +111,10 @@ Paris Velibs
         else if (locations[i][3] === 100) { var icon = velo2}
         else if (locations[i][3] === 200) { var icon = velo3}
         else if (locations[i][3] === 500) { var icon = velo4}
-        else if (locations[i][3] === 50) { var icon = place1}
-         else if (locations[i][3] === 100) { var icon = place2}
-          else if (locations[i][3] === 200) { var icon = place3}
-           else if (locations[i][3] === 500) { var icon = place4}
+        else if (locations[i][4] === 50) { var icon = place1}
+         else if (locations[i][4] === 100) { var icon = place2}
+          else if (locations[i][4] === 200) { var icon = place3}
+           else if (locations[i][4] === 500) { var icon = place4}
         
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -128,7 +128,7 @@ Paris Velibs
                 infowindow.open(map, marker);
             }
         })(marker, i));
-}
+     }
       /*google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(locations[i][0]);
