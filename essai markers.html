@@ -9,7 +9,7 @@ Paris Velibs
 
 <body>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <div id="map-canvas" style="width: 1000px; height: 700px;"></div>
+    <div id="map" style="width: 1000px; height: 700px;"></div>
 
   <script type="text/javascript">
    var locations = [
@@ -97,12 +97,13 @@ Paris Velibs
     };
     var  place4 = {
         /*path : google.maps.SymbolPath.CIRCLE,*/
-        fillColor: 'green',
-        fillOpacity: 0.8,
-        scale: 0.05,
-        strokeColor: 'blue',
-        strokeWeight: 2,
-        radius : 500
+        fillOpacity: 0.5,
+        fillColor: '#ff0000',
+        strokeOpacity: 0.5,
+        strokeColor: '#ff0000',
+        strokeWeight: 3.0,
+        radius : 500,
+        scale : 15
     };
 
     for (i = 0; i < locations.length; i++) {
@@ -129,46 +130,7 @@ Paris Velibs
             }
         })(marker, i));
      }
-      /*google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-        }
-      })(marker, i));*/
-
-    /*function addMarker(feature) {
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        icon: icons,
-        map: map
-      });
-    }*/
-
-    /*var marker1, i;
-
-    for (i = 0; i < locations.length; i++) {  
-      marker1 = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        icon: {
-          path : google.maps.SymbolPath.CIRCLE,
-          radius: locations[i][3], 
-          fillOpacity: 0.5,
-          fillColor: '#ff0000',
-          strokeOpacity: 0.5,
-          strokeColor: '#ff0000',
-          strokeWeight: 3.0, 
-          scale: 15 //pixels
-        },
-          map: map
-      });*/
-     /* google.maps.event.addListener(marker1, 'click', (function(marker1,i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker1);
-        }
-      })(marker1,i));*/
-   
-    /*}
+        
   </script>
 </body>
 </html>
