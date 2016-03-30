@@ -2,17 +2,165 @@
             <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
             <div id="map-canvas" style="height: 100%; width: 100%"></div>
             <script type="text/javascript">
-                var map;
-                function show_map() {
-                    map = new google.maps.Map(document.getElementById("map-canvas"), {
-                        zoom: 12 ,
-                        center: new google.maps.LatLng(48.864528,2.355489)
+                var locations = [
+                ['31705 - CHAMPEAUX (BAGNOLET)', 48.864527820951395, 2.4161707244259008, 200,  200],
+                ['10042 - POISSONNIÈRE - ENGHIEN', 48.872420063053134, 2.3483952362828067, 100, 500],
+                ['08020 - METRO ROME', 48.8821489456319, 2.319860054774211, 200, 200],
+                ['19121 - BELLEVILLE PRE SAINT GERVAIS', 48.87551806864874, 2.3929607872798293, 200, 200],
+                ['01020 - RIVOLI CONCORDE', 48.86628522115606, 2.325249045083579, 100, 500],
+                ["10007 - CHATEAU D'EAU", 48.87242997325711, 2.355489390173873, 200, 200]
+                ];
+                var map = new google.maps.Map(document.getElementById("map-canvas"), {
+                        zoom: 12,
+                        center: new google.maps.LatLng(48.853, 2.35),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
                     });
-                    new google.maps.Marker({
-                    position: new google.maps.LatLng((48.864528,2.33),(48,2.348395)),
-                    map: map
-                    });
+               
+                
+                var infowindow = new google.maps.InfoWindow();
+                var marker, i;
+
+                     for (i = 0; i < locations.length; i++) {
+
+                         if (locations[i][3] === 50) {
+                           marker = new google.maps.Marker({
+                              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                              icon : {
+                                path : google.maps.SymbolPath.CIRCLE,
+                                fillColor: '#FF0000',
+                                fillOpacity: 0.35,
+                                scale: 5,
+                                strokeColor: '#FF0000',
+                                strokeWeight: 3,
+
+                               },
+                              map:map,
+                              draggable : true
+                              })
+                         }
+                          else if (locations[i][3] === 100) {
+                            marker = new google.maps.Marker({
+                              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                              icon : {
+                                path : google.maps.SymbolPath.CIRCLE,
+                                fillColor: '#FF0000',
+                                fillOpacity: 0.35,
+                                scale: 10,
+                                strokeColor: '#FF0000',
+                                strokeWeight: 2,
+
+                               },
+                              map : map,
+                              draggable : true
+                              })
+                           }
+                            else if (locations[i][3] === 200) {
+                              marker = new google.maps.Marker({
+                               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                               icon : {
+                                  path : google.maps.SymbolPath.CIRCLE,
+                                  fillColor: '#FF0000',
+                                  fillOpacity: 0.35,
+                                  scale: 15,
+                                  strokeColor: '#FF0000',
+                                  strokeWeight: 2,
+
+                               },
+                               map : map,
+                               draggable : true
+                              })
+                            }
+                             else if (locations[i][3] === 500) {
+                              marker = new google.maps.Marker({
+                               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                               icon : {
+                                  path : google.maps.SymbolPath.CIRCLE,
+                                  fillColor: '#FF0000',
+                                  fillOpacity: 0.35,
+                                  scale: 20,
+                                  strokeColor: '#FF0000',
+                                  strokeWeight: 2,
+
+                               },
+                               map : map
+
+                              })
+                             }
+                      if (locations[i][4] === 50) {
+                           marker = new google.maps.Marker({
+                              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                              icon : {
+                                path : google.maps.SymbolPath.CIRCLE,
+                                fillColor: 'green',
+                                fillOpacity: 0.35,
+                                scale: 5,
+                                strokeColor: 'green',
+                                strokeWeight: 3,
+
+                               },
+                              map:map,
+                              draggable : true
+                              })
+                         }      
+                             else if (locations[i][4] === 100) {
+                              marker = new google.maps.Marker({
+                               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                               icon : {
+                                  path : google.maps.SymbolPath.CIRCLE,
+                                  fillColor: 'green',
+                                  fillOpacity: 0.35,
+                                  scale: 10,
+                                  strokeColor: 'green',
+                                  strokeWeight: 2,
+
+                               },
+                               map : map
+
+                              })
+                             }
+                               else if (locations[i][4] === 200) {
+                              marker = new google.maps.Marker({
+                               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                               icon : {
+                                  path : google.maps.SymbolPath.CIRCLE,
+                                  fillColor: 'green',
+                                  fillOpacity: 0.35,
+                                  scale: 15,
+                                  strokeColor: 'green',
+                                  strokeWeight: 2,
+
+                               },
+                               map : map
+
+                              })
+                             }
+                               else if (locations[i][4] === 500) {
+                              marker = new google.maps.Marker({
+                               position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                               icon : {
+                                  path : google.maps.SymbolPath.CIRCLE,
+                                  fillColor: 'green',
+                                  fillOpacity: 0.35,
+                                  scale: 20,
+                                  strokeColor: 'green',
+                                  strokeWeight: 2,
+
+                               },
+                               map : map
+
+                              })
+                             }
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
                 }
-                google.maps.event.addDomListener(window, 'load', show_map);
+            })(marker, i));
+         }
+
+                     
+                
+              
             </script>
         
